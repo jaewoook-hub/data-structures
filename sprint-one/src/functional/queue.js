@@ -30,4 +30,3 @@ var Queue = function() {
 
   return someInstance;
 };
->>>>>>> 2b2f9cdc792c303dd3c3ca355996eccdd6ddace4
