@@ -20,18 +20,34 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    // head = head.next
-    // edge case: if list is empty,
-      // return and empty object
-    // edge case: if the list only has one element
-    if (list.head.next = null) {
 
+    if (list.head === null) { // checks if linked-list is empty
+      return {};
     }
-    // {head: null, tail: null} -> addToTail(4) -> {head: {4, next: null}, tail: {4, next: null}}
-      // if you do addToTail(4) then removeHead, should return an empty list
+
+    var oldHead = list.head; // store old head
+    list.head = list.head.next;
+
+    return oldHead.value;
   };
 
   list.contains = function(target) {
+    currentNode = list.head;
+    if (currentNode === null) {
+      return false;
+    } else {
+      while (currentNode.next !== null) {
+        if (currentNode.value === target) {
+          return true;
+        }
+        currentNode = currentNode.next;
+      }
+    }
+    if (currentNode.next === null && currentNode.value === target) {
+      return true;
+    } else if (currentNode.next === null && currentNode.value !== target) {
+      return false;
+    }
   };
 
   return list;
@@ -49,31 +65,5 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-var newLinkedList = LinkedList();
-// {head: null, tail: null, addToTail: func() {}, etc}
-var node0 = Node('hello');
-// {value: 'hello', next: null}
-newLinkedList.addToTail('hi'); // {head: {value: 'hello', next: null}, tail: {value: 'hello', next: null}}
-// tail.next -> null
-var node1 = Node('hi');
-// {value: 'hi', next: null}
-newLinkedList.addToTail(node1);
-// {head: {value: 'hello', next: node1}, tail: {value: 'hi', next: null}}
-newLinkedList.addToTail(node2);
-// {head: node0, tail: node1}
-// {head: {value: 'hello', next: node1}, tail: {value: 'node2val', next: null}}
-// node1: {value: 'hi', next: node2}
-// {head: node0, tail: node2}
-newLinkedList.addToTail(node3);
-// {head: node0, tail: node1}
-// {head: {value: 'hello', next: node1}, tail: {value: 'node3val', next: null}}
-// node1: {value: 'hi', next: node2}
-// {head: node0, tail: node3}
-
-newLinkedList.removeHead();
-// we had this: {head: {value: 'hello', next: node1}, tail: {value: 'node3val', next: null}}
-// after running removeHead, we have:
-// {head: node1, tail: {value: 'node3val', next: null}}
 
 
