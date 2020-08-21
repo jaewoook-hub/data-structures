@@ -24,7 +24,7 @@ var stackMethods = {
     this.stackSize++;
   },
 
-  pop: function(val) {
+  pop: function() {
     // if storage > 0
     if (this.stackSize > 0) {
       // decrement stackSize
